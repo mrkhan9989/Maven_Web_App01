@@ -1,0 +1,18 @@
+pipeline{
+    agent any 
+    environment{
+        PATH="/opt/maven/bin:$PATH"
+    }
+    stages{
+        stage("git clone"){
+            steps{
+              git 'https://github.com/mrkhan9989/Maven_Web_App01'
+            }
+        }
+        stage("maven goals"){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
